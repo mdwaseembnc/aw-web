@@ -1,0 +1,868 @@
+Web Design Lab Programs::
+
+1)<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Time table</title>
+</head>
+<body>
+    <style>
+       th{
+            border:1px solid black;
+            width:200px;
+            height:50px;
+        }
+
+        td{
+            border:1px solid black;
+            width:200px;
+            height:60px;
+          }
+    </style>
+    <div>
+        <h2 align="center">University Visvesvaraya College of Engineering</h2>
+        <h3 align="center">KR Circle, Bengaluru</h3>
+        <h4 align="center">Time table for CSE 2023</h4>
+    </div>
+
+    <div style="border:black; border-width:2px;border-style:solid;">
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>8:00 am to 8:50 am</th>
+                <th>8:50 am to 9:40 am</th>
+                <th>9:40 am to 10:30 am</th>
+                <th> </th>
+                <th>11:00 am to 11:50 am</th>
+                <th>11:50 am to 12:40 am</th>
+                <th>12:40 am to 1:30 am</th>
+                <th>1:30 am to 2:20 am</th>
+                <th> </th>
+                <th>2:45 am to 5:30 am</th>
+            </tr>
+
+            <tr>
+                <th>Monday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td rowspan="6" align="center">B<br>R<br>E<br>A<br>K</td>
+                <td colspan="2" align="center">MPMC</td>
+                <td colspan="2" align="center">Biology</td>
+                <td rowspan="6" align="center">B<br>R<br>E<br>A<br>K</td>
+                <td align="center">Lab</td>
+            </tr>
+
+            <tr>
+                <th>Tueday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td colspan="2" align="center">OS</td>
+                <td colspan="2" align="center">MPMC</td>
+                <td align="center">Maths-4</td>
+            </tr>
+
+            <tr>
+                <th>Wednesday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td colspan="2" align="center">DAA</td>
+                <td colspan="2" align="center">OS</td>
+                <td align="center">CIP</td>
+            </tr>
+
+            <tr>
+                <th>Thursday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td></td>
+                <td colspan="3" align="center">Lab</td>
+                <td align="center">UHV-2</td>
+            </tr>
+
+            <tr>
+                <th>Fridayday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td colspan="2" align="center">Maths-4</td>
+                <td colspan="2" align="center">DAA</td>
+                <td align="center">BM</td>
+            </tr>
+
+            <tr>
+                <th>Saturday</th>
+                <td colspan="3" align="center">Lab</td>
+                <td colspan="4" align="center"></td>
+                <td align="center">BM</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+............................................................................................
+2) <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure</title>
+</head>
+<body>
+    <table width="100%" border="0">
+      <tr>
+        <td colspan="2" bgcolor="#FCC9C5">
+            <center><h1>UVCE COLLEGE INFRASTRUCTURE</h1></center>
+        </td>
+      </tr>
+
+      <tr valign="top">
+        <td bgcolor="#EAE7E2" width="80" height="170">
+            <b>DEPARTMENTS</b><br><br>
+            1.Computer Science and Engineering<br>
+            2.Electronics Communication and Engineering<br>
+            3.Civil Engineering<br>
+            4.Mechanical Engineering<br>
+            5.Electrical Electronics and Engineering<br>
+        </td>
+
+        <td bgcolor="#D7E2E8" width="80" height="170">
+            <b>LABS AND CLASSROOMS</b><br><br>
+            1.LH Building<br>
+            2.CSE Block<br>
+            3.ECE Block<br>
+            4.EEE Block<br>
+            5.Mechanical Block<br>
+        </td>
+        </tr>
+
+        <tr>
+        <td bgcolor="#B9CBD9" width="80" height="170">
+            <b>SPECIAL AREAS</b><br><br>
+            1.Nandini Canteen<br>
+            2.Society<br>
+            3.Senate Hall<br>
+            4.Rock Garden<br>
+            5.Marvel<br><br>
+        </td>
+
+        <td bgcolor="#D9E9FF" width="80" height="170">
+            <b>LIBRARY</b><br><br>
+            1.Book Issue Block<br>
+            2.Study Area<br>
+            3.Placement rooms<br>
+            4.Seminar Halls<br>
+        </td>
+        </tr>
+      
+        <tr>
+         <td colspan="2" bgcolor="#C2CEFF" width="100%" height="120"><center><p>UVCE is an engineering college established by 
+        Dr. Sir M Visvesvaraya in the year 1917.<br><br>It is full of red color buildings and is surrounded by green trees.<br><br> 
+        The beauty of UVCE doubles when it rains</p></center></td>
+      </tr>
+      
+    </table>
+</body>
+</html>
+
+.........................................................................
+3)<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure</title>
+</head>
+<body>
+    <style>
+        h1,h2{
+            text-align: center;
+        }
+
+        .uvce{
+            width:100%;
+            border:2px solid black;
+            background-color: rgb(252, 221, 252);
+            border-radius: 20px;
+            height: 530px;
+            text-align: center;
+        }
+
+        span{
+            font-weight: bold;
+        }
+        
+        #inf{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .infra{
+            width:90%;
+            display: block;
+            margin: auto;
+            border:2px solid black;
+            border-radius: 20px;
+            text-align: center;
+            background-color:white;
+        }
+
+        #struct{
+            margin-top: 20px;
+            height: 170px;
+        }
+    </style>
+    <div class="uvce">
+
+        <h1>University of Visvesvaraya College of Engineering</h1>
+
+        <div>
+            <h2>Welcome to UVCE</h2>
+           
+        </div>
+
+    <div  id="inf">
+
+       <div class="infra">
+            <h3>Departments</h3>
+            <p>
+                <span style="color:red">CSE</span><br>
+                <span style="color:blue">ISE</span><br>
+                <span style="color:green">ECE</span><br>
+                <span style="color:purple">EEE</span><br>
+                <span style="color:rgb(84, 7, 13)">Mechanical</span><br>
+            </p>
+        </div>
+
+       
+    </div>
+        <div class="infra" id="struct">
+            <p>UVCE was established by Dr. Sir M Visvesvaraya in the year 1917</p>
+            <p>UVCE has <span style="color:red"> red </span>buildings and <span style="color:green"> green </span>trees</p>
+            <p>College has a Nandini Canteen, Society for stationaries, Library etc</p>
+            <p>Beauty of UVCE doubles when it rains</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+.......................................................................................
+4. Use frames such that page is divided into 3 frames 20% on left to show contents of pages, 
+60% in center to show body of page, remaining on right to show remarks.
+
+Save file as main-frame.html
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+ <frameset cols="20%,*"> 
+<frame src="left-frame.html"> 
+<frameset rows="60%,*"> 
+<frame src="right-top-frame.html"> 
+<frame src="right-bottom-frame.html"> 
+</frameset> 
+</frameset>
+</html>
+
+Save file as left-frame.html
+
+<!DOCTYPE html>
+<html> 
+ <head>
+ <title>HTML Frames</title>
+ </head>
+<body>
+<h1>CONTENTS</h1>
+<ul>
+<li>Chapter-1</li>
+<li>Chapter-2</li>
+<li>Chapter-3</li>
+<li>Chapter-4</li>
+<li>Chapter-5</li>
+<li>Chapter-6</li>
+<li>Chapter-7</li>
+<li>Chapter-8</li>
+<li>Chapter-9</li>
+</ul>
+</body>
+
+Save file as right-top-frame.html
+
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+<h1>RIGHT TOP FRAME</h1>
+</html>
+</html>
+
+Save file as right-bottom-frame.html
+
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+ <body>
+<h1>Bottom Frame</h1>
+2018 © UVCE. All rights reserved.
+powered by TargetOrate
+Privacy Policy Reach Us Terms & Conditions Refund Policy
+</body>
+</html>
+................................................................................................
+5)<!DOCTYPE HTML>
+
+<html>
+   <body>
+      <br>
+<h1>AUDIO</h1>
+
+      
+      <audio controls autoplay>
+         <source src = "Apna Bana Le From Bhediya - DjBaap.Net.mp3" />
+         </audio>
+<br>
+<h2> <u>video elements!!</u>
+</h2>
+<video  width = "300" height = "200" controls autoplay>
+         <source src = "Insidious The Red Door (2023) English 1080p DD+5.1 @M4MHD.mkv" />
+       
+      </video>
+      
+   </body>
+</html>
+.................................................................................................
+6) Develop static pages (using only HTML) of an online book store, the pages should resemble:
+www.amazon.com, the website should consist the following pages, home page, registration and 
+user login, user profile page, books catalog, shopping cart, payment by credit card, order 
+confirmation.
+Home page
+
+Main.html:
+<html>
+<head>
+<title>
+Amazon</title>
+</head>
+<body bgcolor="cyan"> <center>
+<strong><h1>Welcome to AMAZON</h1></strong>
+<form method="post" action="login.html" target=_blank >
+<h4>for books</h4><input type="submit" value="click here">
+</form>
+</center>
+</body>
+</html>
+
+
+Registration and user Login
+
+Login.html:
+<html>
+<head>
+<title>
+login</title>
+</head>
+<body bgcolor="cyan"> <center>
+<strong><h1> AMAZON </h1></strong></center>
+<right>
+<table align="right">
+<tr>
+<td><h4>user name</td>
+<td><input type="text" ></td>
+<td></td>
+</tr>
+<tr>
+<td><h4>password</td>
+<td><input type="password"></td>
+<td></td>
+</tr>
+<tr>
+<td>
+<form method="post" action="catalog.html" >
+<input type="submit" value="submit" >
+</form>
+</td>
+<td>
+<form method="post" action="reg.html" >
+<input type="submit" value="register" >
+&nbsp;&nbsp;
+<input type="reset" value="reset"></form></td>
+</tr>
+</table>
+</body>
+</html>
+
+Registration page
+
+reg.html:
+<html>
+<head>
+<title>
+login page</title>
+</head>
+<body bgcolor="cyan">
+<center><strong><h1> AMAZON </h1></strong></center>
+<form method="post" action="catalog.html" >
+<right>
+<table align="left">
+<tr>
+<td><h4>user name</td>
+<td><input type="text" ></td>
+<tr>
+<tr>
+<td><h4>password</td>
+<td><input type="password"></td>
+</tr>
+<tr>
+<td><h4>confirm password</td>
+<td><input type="password"></td>
+</tr>
+<tr>
+<td><h4>male &nbsp;&nbsp;
+<option >
+<input type="radio" name="sex" id="male"></td>
+<td><h4>female &nbsp; &nbsp;
+<input type="radio" name="sex" id="female" ></td>
+</option>
+</tr>
+<tr>
+<td>Address</td>
+<td><textarea name="address" rows=5 cols=19>
+</textarea>
+</td>
+<tr>
+<td>
+<input type="submit" value="submit" ></td>
+<td>
+<input type="reset" value="reset"></td>
+</tr>
+</form>
+</body>
+</html>
+
+Userprofile
+
+userprofile.html
+<html>
+<head>
+<title>
+userprofile</title>
+</head>
+<body bgcolor="cyan"> <center>
+<strong><h1>Welcome to AMAZON Online Book Store </h1></strong></center>
+Edit your profile here...
+<form method="post" action="catalog.html" >
+<right>
+<table align="left">
+<tr>
+<td><h4>Edit user name</td>
+<td><input type="text" ></td>
+<tr>
+<tr>
+<td><h4>Edit password</td>
+<td><input type="password"></td>
+</tr>
+<tr>
+<option >
+<td><h4>male &nbsp;&nbsp;
+<input type="radio" name="sex" id="male"></td>
+<td><h4>female &nbsp; &nbsp;
+<input type="radio" name="sex" id="female" ></td>
+</option>
+</tr>
+<tr>
+<td>Edit Address</td>
+<td><textarea name="address" rows=5 cols=19>
+</textarea>
+</td>
+<tr>
+<td>
+<input type="submit" value="submit" ></td>
+</tr>
+</form>
+</body>
+</html>
+
+
+Books catalog
+Catalog.html:
+<html>
+<head>
+<title>
+books catalog</title>
+</head>
+<body bgcolor="cyan">
+<center><h1>AMAZON</h1></center>
+<form method="post" action="shopping.html">
+<left>
+<table>
+<tr>
+<td><b><h3>frontend books</td>
+<td></td></tr>
+<tr>
+<td></td>
+<td><h4>C&Ds</td>
+</tr>
+<tr>
+<td></td>
+<td><h4>Ads</td>
+</tr>
+<tr>
+<td></td>
+<td><h4>JAVA
+</td></tr>
+<tr>
+<td><b><h3>backend books</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><h4>Oracle</td>
+</tr>
+<tr>
+<td></td>
+<td><h4>Ms SQL Server
+</td></tr>
+<tr>
+<td></td>
+<td><h4>MySql </td>
+</tr>
+</table>
+</h4>
+<center>
+<b>for buy one of these books
+<br>
+</b><input type="submit" value="click here">
+</center>
+</form>
+</body>
+</html>
+
+Shopping cart
+
+Shopping.html:
+<html>
+<head><title>shopping cart</title>
+</head>
+<body bgcolor="cyan">
+<center><h1>
+Shopping Cart</h1></center>
+<br><br><br><br><br>
+<table align="center">
+<tr>
+<td>Text Books</td>
+<td>
+<select >
+<optgroup label="select the book">
+<option value="C&Ds">C&Ds
+<option value="Ads">Ads
+<option value="Java">Java
+<option value="Oracle">Oracle
+<option value="Ms SQL Server">Ms SQL Server
+<option value="MySql">MySql
+</optgroup>
+</select>
+</td></tr>
+<tr>
+<td>
+Quantity</td>
+<td>
+<input type="text" id="q">
+</td></tr>
+<tr>
+<td></td>
+<td>
+<form method=post action="payment.html">
+<input type="submit" value=ok />
+</form>
+</td></tr>
+</table>
+<center>
+<pre>Cost of one book is"500" + shipping "100"</pre>
+</center>
+<body>
+</html>
+
+
+Payment by credit card
+
+Payment.html:
+<html>
+<head><title>payment</title></head>
+<body bgcolor="cyan">
+<center><h1>Payment By Credit Card</h1></center>
+<form method=post action="ordrconform.html">
+<br><br><br><br><br>
+<table align="center">
+<tr>
+<td>
+<h4>Total Amount</h4></td>
+<td><input type="text">
+</td>
+</tr>
+<tr>
+<td><h4>Credit Card Number</td>
+<td><input type="text"></td>
+</tr>
+<tr>
+<td>
+</td>
+<td><input type="submit" value=OK>
+</td>
+</tr>
+</table>
+</form></body>
+</html>
+
+
+Order Conformation
+
+Ordrconform:
+<html>
+<head><title>order conformation</title><M/head>
+<body bgcolor="cyan">
+<center>
+<h1><b>BOOK SHOPPING</h1>
+<pre><strong>
+<b>Your order Is Conformed
+</strong></pre>
+<h2><b>THANK YOU</h2>
+</center>
+</body></html>
+.................................................................................
+7) Write an HTML page that contains a selection box with a list of 5 countries, when the user 
+selects a country, its capital should be printed next to the list; Add CSS to customize the 
+properties of the font of the capital (color, bold and font size).
+<html>
+<head>
+<title>capitals of countries</title>
+<style>
+p{
+color:red;
+font-weight:bold;
+font-size:50;
+}
+</style>
+<script language="javascript">
+function capital()
+{
+var cunt=document.forms["frm1"].country.value; 
+var capital=" Please select any country ";
+if( cunt=="india")
+{
+capital="NEW DELHI";
+}
+if( cunt=="china")
+{
+capital="BEIJING";
+}
+if( cunt=="pakistan")
+{
+capital="ISLAMABAD";
+}
+if( cunt=="bangladesh")
+{
+capital="DHAKA";
+}
+if( cunt=="japan")
+{
+capital="TOKYO";
+}
+
+if( cunt=="select")
+{
+capital="Please select any country";
+}
+document.getElementById("capt").innerHTML=capital;
+}
+</script>
+</head>
+<body>
+<form name="frm1">
+<br/>
+<center>
+Select a Country : <select name="country" onchange="capital()">
+<option value="select">--SELECT--</option>
+<option value="india">INDIA</option>
+<option value="china">CHINA</option>
+<option value="pakistan">PAKISTAN</option>
+<option value="bangladesh">BANGLADESH</option>
+<option value="japan">JAPAN</option>
+</select>
+<br/>
+<br/>
+<font color="green" size="6">Capital is :</font> <p id="capt"></p>
+</center>
+</form>
+</body>
+</html> 
+..........................................................................................................
+8a) 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check First Character</title>
+</head>
+<body>
+    <script>
+        function isFirstCharUpperCase(inputString) {
+            if (typeof inputString !== 'string' || inputString.length === 0) {
+                return false;
+            }
+
+            const firstChar = inputString.charAt(0);
+            return firstChar === firstChar.toUpperCase();
+        }
+
+        const userString = prompt("Enter a string:"); // Prompt the user for input
+
+        const result = isFirstCharUpperCase(userString);
+
+        if (result) {
+            document.write(`The first character of "${userString}" is uppercase.`);
+        } else {
+            document.write(`The first character of "${userString}" is not uppercase.`);
+        }
+    </script>
+</body>
+</html>
+
+8b)
+<html>
+<head>
+    <title>Email Validation</title>
+    <script type="text/javascript">
+        function isValidEmail() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (emailRegex.test(email)) {
+                document.getElementById("result").innerHTML = "Email is valid";
+            } else {
+                document.getElementById("result").innerHTML = "Email is not valid";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Email Validation</h1>
+    <input type="text" id="email" placeholder="Enter your email">
+    <button onclick="isValidEmail()">Check</button>
+    <p id="result"></p>
+</body>
+</html>
+
+8c)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Formatting</title>
+</head>
+<body>
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="formatNumber()">Format</button>
+    <p id="result"></p>
+
+    <script>
+        function numberWithCommas(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function formatNumber() {
+            let number = document.getElementById("numberInput").value;
+            let formattedNumber = numberWithCommas(number);
+            document.getElementById("result").innerText = "Formatted Number: " + formattedNumber;
+        }
+    </script>
+</body>
+</html>
+.....................................................................................................................................
+9. A simple calculator web application that takes two numbers and an operator 
+(+, ,/,*and %) from an HTML page and returns the result page with the 
+operation performed on the operands. b. Write PHP program how to send 
+mail using PHP.
+a.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="num1" placeholder="Enter number 1">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="number" id="num2" placeholder="Enter number 2">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result">Result: </p>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = 'Invalid input';
+            } else {
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num1 / num2;
+                        break;
+                    case '%':
+                        result = num1 % num2;
+                        break;
+                    default:
+                        result = 'Invalid operator';
+                        break;
+                }
+            }
+
+            document.getElementById('result').textContent = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
+
+9b)
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $to = "recipient@example.com"; // Replace with the recipient's email address
+    $subject = "Test Email";
+    $message = "This is a test email sent from a PHP script.";
+    $headers = "From: sender@example.com"; // Replace with the sender's email address
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Email sent successfully!";
+    } else {
+        echo "Email sending failed.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Email</title>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form method="post">
+        <input type="submit" value="Send Email">
+    </form>
+</body>
+</html>
+
