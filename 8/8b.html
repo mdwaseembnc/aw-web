@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Email Validation</title>
+    <script type="text/javascript">
+        function isValidEmail() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (emailRegex.test(email)) {
+                document.getElementById("result").innerHTML = "Email is valid";
+            } else {
+                document.getElementById("result").innerHTML = "Email is not valid";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Email Validation</h1>
+    <input type="text" id="email" placeholder="Enter your email">
+    <button onclick="isValidEmail()">Check</button>
+    <p id="result"></p>
+</body>
+</html>
