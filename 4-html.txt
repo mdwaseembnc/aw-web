@@ -1,0 +1,107 @@
+//save as main-frame.html
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+ 
+<frameset cols="20%,*"> 
+<frame src="left.html"> 
+
+<frameset cols="60%,*"> 
+
+<frame src="center.html">
+ 
+
+<frame src="right.html">
+
+</frameset>
+</frameset> 
+
+</html>
+
+//save as left.html
+<!DOCTYPE html>
+<html> 
+ <head>
+ <title>HTML Frames</title>
+ </head>
+<body>
+<h1><center>CONTENTS</center></h1>
+<ul>
+<li>Chapter-1</li>
+<br>
+<li>Chapter-2</li>
+<br>
+<li>Chapter-3</li>
+<br>
+<li>Chapter-4</li>
+<br>
+<li>Chapter-5</li>
+<br>
+<li>Chapter-6</li>
+<br>
+<li>Chapter-7</li>
+<br>
+<li>Chapter-8</li>
+<br>
+<li>Chapter-9</li>
+</ul>
+</body>
+.........
+//save as center.html
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+<h1>
+<center><u>Remarks</u></center>
+</h1>
+<li>1</li>
+<br>
+<li>2</li>
+<li>1</li>
+<br>
+<li>2</li>
+<li>1</li>
+<br>
+<li>2</li>
+<li>1</li>
+<br>
+<li>2</li>
+<li>1</li>
+<br>
+<li>2</li>
+<li>1</li>
+<br>
+<li>2</li>
+</html>
+</html>
+.............
+//save as right.html
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>HTML Frames</title>
+ </head>
+ <body>
+<h1>Bottom Frame</h1>
+<ol>test report</ol>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+<li>1</li>
+<br>
+</body>
+</html>
