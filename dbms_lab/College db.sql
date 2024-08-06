@@ -248,3 +248,7 @@ SS.SSID = IA.SSID AND
 SUB.SUBCODE = IA.SUBCODE AND
 SUB.SEM = 8;
 
+update iamarks set finalia=(test1+test2+test3-least(test1,test2,test3))/2;
+select * from iamarks;
+
+
