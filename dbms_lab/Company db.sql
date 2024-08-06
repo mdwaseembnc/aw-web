@@ -1,5 +1,3 @@
---Create Table DEPARTMENT with PRIMARY KEY as DNO
-
 CREATE TABLE DEPARTMENT
 (DNO VARCHAR(20) PRIMARY KEY,
 DNAME VARCHAR(20),
@@ -8,9 +6,8 @@ MGR_START_DATE DATE);
 
 DESC DEPARTMENT;
 
-----------------------------------
 
---Create Table EMPLOYEE with PRIMARY KEY as SSN
+
 
 CREATE TABLE EMPLOYEE
 (SSN VARCHAR(20) PRIMARY KEY,
@@ -25,16 +22,14 @@ FOREIGN KEY (DNO) REFERENCES DEPARTMENT (DNO));
 
 DESC EMPLOYEE;
 
-----------------------------------
 
--- ADD FOREIGN KEY Constraint to DEPARTMENT table
+
 
 ALTER TABLE DEPARTMENT
 ADD FOREIGN KEY (MGR_SSN) REFERENCES EMPLOYEE(SSN);
 
-----------------------------------
 
---Create Table DLOCATION with PRIMARY KEY as DNO and DLOC and FOREIGN KEY DNO referring DEPARTMENT table
+
 
 CREATE TABLE DLOCATION
 (DLOC VARCHAR(20),
@@ -44,9 +39,7 @@ PRIMARY KEY (DNO, DLOC));
 
 DESC DLOCATION;
 
-----------------------------------
 
---Create Table PROJECT with PRIMARY KEY as PNO and FOREIGN KEY DNO referring DEPARTMENT table
 
 CREATE TABLE PROJECT
 (PNO INTEGER PRIMARY KEY,
@@ -57,9 +50,8 @@ FOREIGN KEY (DNO) REFERENCES DEPARTMENT(DNO));
 
 DESC PROJECT;
 
-----------------------------------
 
---Create Table WORKS_ON with PRIMARY KEY as PNO and SSN and FOREIGN KEY SSN and PNO referring EMPLOYEE and PROJECT table
+
 
 CREATE TABLE WORKS_ON
 (HOURS INTEGER,
@@ -71,11 +63,7 @@ PRIMARY KEY (SSN, PNO));
 
 DESC WORKS_ON;
 
-----------------------------------
 
-
----------------------------------------------------------------------------------------------
---Inserting records into EMPLOYEE table
 
 INSERT INTO EMPLOYEE (SSN, NAME, ADDRESS, SEX, SALARY) VALUES
  ('ABC01','BEN SCOTT','BANGALORE','M', 450000);
@@ -102,9 +90,7 @@ INSERT INTO EMPLOYEE (SSN, NAME, ADDRESS, SEX, SALARY) VALUES
 
  SELECT * FROM EMPLOYEE;
 
-----------------------------------
 
---Inserting records into DEPARTMENT table
 
 INSERT INTO DEPARTMENT VALUES ('1','ACCOUNTS','ABC09', '2016-01-03');
 INSERT INTO DEPARTMENT VALUES ('2','IT','ABC11', '2017-02-04');
@@ -114,9 +100,7 @@ INSERT INTO DEPARTMENT VALUES ('5','SALES','ABC06', '2017-01-08');
 
 SELECT * FROM DEPARTMENT;
 
-----------------------------------
 
---Updating EMPLOYEE records
 
 UPDATE EMPLOYEE SET
 SUPERSSN=NULL, DNO='3'
@@ -164,9 +148,7 @@ WHERE SSN='ABC11';
 
 SELECT * FROM EMPLOYEE;
 
--------------------------------
 
---Inserting records into DLOCATION table
 
 INSERT INTO DLOCATION VALUES ('BENGALURU', '1');
 INSERT INTO DLOCATION VALUES ('BENGALURU', '2');
@@ -176,9 +158,7 @@ INSERT INTO DLOCATION VALUES ('MYSORE', '5');
 
 SELECT * FROM DLOCATION;
 
---------------------------------
 
---Inserting records into PROJECT table
 
 INSERT INTO PROJECT VALUES (1000,'IOT','BENGALURU','5');
 INSERT INTO PROJECT VALUES (1001,'CLOUD','BENGALURU','5');
@@ -191,9 +171,7 @@ INSERT INTO PROJECT VALUES (1007,'SMART CITY','BENGALURU','2');
 
 SELECT * FROM PROJECT;
 
-------------------------------
 
---Inserting records into WORKS_ON table
 
 INSERT INTO WORKS_ON VALUES (4, 'ABC02', 1000);
 INSERT INTO WORKS_ON VALUES (6, 'ABC02', 1001);
@@ -215,8 +193,6 @@ SELECT * FROM WORKS_ON;
 
 
 
----------------------------------------------------------------------
---Make a list of all project numbers for projects that involve an employee whose last name is ‘Scott’, either as a worker or as a manager of the department that controls the project.
 
 SELECT DISTINCT P.PNO
 FROM PROJECT P, DEPARTMENT D, EMPLOYEE E
@@ -230,7 +206,6 @@ WHERE P1.PNO=W.PNO
 AND E1.SSN=W.SSN
 AND E1.NAME LIKE '%SCOTT';
 
---Show the resulting salaries if every employee working on the ‘IoT’ project is given a 10 percent raise.
 
 SELECT E.NAME, 1.1*E.SALARY AS INCR_SAL
 FROM EMPLOYEE E, WORKS_ON W, PROJECT P
@@ -238,14 +213,12 @@ WHERE E.SSN=W.SSN
 AND W.PNO=P.PNO
 AND P.PNAME='IOT';
 
---Find the sum of the salaries of all employees of the ‘Accounts’ department, as well as the maximum salary, the minimum salary, and the average salary in this department
 
 SELECT SUM(E.SALARY), MAX(E.SALARY), MIN(E.SALARY), AVG(E.SALARY)
 FROM EMPLOYEE E, DEPARTMENT D
 WHERE E.DNO=D.DNO
 AND D.DNAME='ACCOUNTS';
 
---Retrieve the name of each employee who works on all the projects controlled by department number 5 (use NOT EXISTS operator).
 
 SELECT E.NAME
 FROM EMPLOYEE E
@@ -253,7 +226,6 @@ WHERE NOT EXISTS(SELECT PNO FROM PROJECT WHERE DNO='5' AND PNO NOT IN (SELECT
 PNO FROM WORKS_ON
 WHERE E.SSN=SSN));
 
---For each department that has more than five employees, retrieve the department number and the number of its employees who are making more than Rs. 6,00,000.
 
 SELECT D.DNO, COUNT(*)
 FROM DEPARTMENT D, EMPLOYEE E
