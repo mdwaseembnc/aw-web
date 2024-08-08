@@ -1,0 +1,74 @@
+class BikeRental:
+    def __init__(self):
+        self.available_bikes = 10  # Total available bikes
+        self.rentals = []  # To keep track of rentals
+
+    def show_available_bikes(self):
+        print(f"Available bikes: {self.available_bikes}")
+
+    def rent_bike(self, rental_type, quantity):
+        if quantity < 1 or quantity > 5:
+            print("You can rent between 1 to 5 bikes.")
+            return
+
+        if self.available_bikes < quantity:
+            print("Not enough bikes available.")
+            return
+
+        self.available_bikes -= quantity
+        total_cost = self.calculate_cost(rental_type, quantity)
+
+        self.rentals.append((rental_type, quantity, total_cost))
+        print(f"Successfully rented {quantity} bike(s) on a {rental_type} basis.")
+        print(f"Total cost: Rs {total_cost}")
+
+    def calculate_cost(self, rental_type, quantity):
+        rates = {
+            'hourly': 100,
+            'daily': 500,
+            'weekly': 2500
+        }
+
+        if rental_type in rates:
+            cost = rates[rental_type] * quantity
+            return cost
+        elif rental_type == 'family':
+            total_cost = sum(rates['hourly'] * quantity)  # Assuming hourly for family rental
+            discounted_cost = total_cost * 0.7  # 30% discount
+            return discounted_cost
+        else:
+            print("Invalid rental type.")
+            return 0
+
+    def return_bike(self, quantity):
+        self.available_bikes += quantity
+        print(f"Successfully returned {quantity} bike(s).")
+        print(f"Available bikes: {self.available_bikes}")
+
+def main():
+    rental_system = BikeRental()
+
+    while True:
+        print("\n--- Bike Rental System ---")
+        rental_system.show_available_bikes()
+        print("1. Rent a bike")
+        print("2. Return a bike")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            rental_type = input("Enter rental type (hourly/daily/weekly/family): ").lower()
+            quantity = int(input("Enter number of bikes to rent (1-5): "))
+            rental_system.rent_bike(rental_type, quantity)
+        elif choice == '2':
+            quantity = int(input("Enter number of bikes to return: "))
+            rental_system.return_bike(quantity)
+        elif choice == '3':
+            print("Thank you for using the Bike Rental System!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
