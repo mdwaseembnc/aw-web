@@ -12,6 +12,25 @@ print("Numbers whose square is divisible by 8:")
 find_numbers_with_square_divisible_by_8(numbers_list)
 ....................................................................................................................
 1b)
+    print("This will cause a SyntaxError"
+ my_list = [1, 2, 3]
+    # This will raise an IndexError because index 5 is out of range
+    print(my_list[5])
+
+i=int('b')
+ result = "The answer is: " + 42
+
+
+
+
+
+
+
+
+
+
+
+.................................................................................................
 def illustrate_errors():
 
     try:
