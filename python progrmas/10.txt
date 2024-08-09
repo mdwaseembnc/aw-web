@@ -1,0 +1,37 @@
+import requests
+from bs4 import BeautifulSoup
+
+def fetch_image_links(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+    # Step 1: Send a request to the URL with the header
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # Check if the request was successful
+
+    # Step 2: Parse the HTML content using BeautifulSoup
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Step 3: Find all image tags
+    images = soup.find_all('img')
+
+    # Step 4: Extract and display image links
+    image_links = []
+    for img in images:
+        img_url = img.get('src')
+        if img_url:
+            # Handle relative URLs
+            if img_url.startswith("//"):
+                img_url = "https:" + img_url
+            elif img_url.startswith("/"):
+                img_url = "https://en.wikipedia.org" + img_url
+            image_links.append(img_url)
+
+    # Display the image links
+    for idx, link in enumerate(image_links, start=1):
+        print(f"{idx}: {link}")
+
+if __name__ == "__main__":
+    wiki_url = "https://en.wikipedia.org/wiki/Sachin_Tendulkar"
+    fetch_image_links(wiki_url)
