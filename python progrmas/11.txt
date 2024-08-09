@@ -1,0 +1,32 @@
+import requests
+from bs4 import BeautifulSoup as bs
+
+url = "https://www.imdb.com/list/ls044627954/"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
+    
+}
+
+response = requests.get(url, headers=headers)
+print("Response:", response)
+
+soup = bs(response.content, "html.parser")
+
+
+movie_containers = soup.find_all("li", class_="ipc-metadata-list-summary-item")
+top_count = 0
+
+for container in movie_containers:  
+    movie_name = container.find("h3",class_="ipc-title__text").text
+    movie_year = container.find("span",class_="sc-b189961a-8 kLaxqf dli-title-metadata-item")
+    movie_detail = container.find("div",class_="ipc-html-content-inner-div")
+
+    print()
+    print(str(top_count + 1) + ")", "Movie Name:", movie_name)
+    print("Movie Year:", movie_year)
+    print("Movie Detail:", movie_detail)
+
+    top_count += 1
+
+    if top_count == 10:
+     break
