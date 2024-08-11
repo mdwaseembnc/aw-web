@@ -18,8 +18,8 @@ top_count = 0
 
 for container in movie_containers:  
     movie_name = container.find("h3",class_="ipc-title__text").text
-    movie_year = container.find("span",class_="sc-b189961a-8 kLaxqf dli-title-metadata-item")
-    movie_detail = container.find("div",class_="ipc-html-content-inner-div")
+    movie_year = container.find("span",class_="sc-b189961a-8 hCbzGp dli-title-metadata-item").text
+    movie_detail = container.find("div",class_="sc-74bf520e-1 Cxrmk").text
 
     print()
     print(str(top_count + 1) + ")", "Movie Name:", movie_name)
