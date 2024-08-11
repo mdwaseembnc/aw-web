@@ -27,3 +27,5 @@ class MovieSimilarities(MRJob):
         return similarity_score
 if __name__ == '__main__':
     MovieSimilarities.run()
+---------------------------------------------------------
+https://github.com/sidooms/MovieTweetings/blob/master/latest/movies.dat
