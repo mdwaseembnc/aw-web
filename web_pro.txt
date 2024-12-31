@@ -1,0 +1,1051 @@
+1a.html
+
+<html>
+ <!-- path to perl file -->
+    <form action="http://localhost:8080/cgi-bin/1a.pl">
+        <center>
+        <input type=submit value=Show_Server_Info />
+        </center>
+    </form>
+ </html>
+
+
+1a.pl
+
+#!C:/xampp/perl/bin/perl.exe
+#this is a here-document
+print<<here;
+Content-type:text/html\n\n
+<html>
+<center>
+    <table border=1>
+    <tr>
+        <th>ENV_VARIABLES</th><th>Value</th>
+    </tr>
+here
+#end of here document
+#display values in a table
+foreach $i (sort keys %ENV)
+{
+    print "<tr><td>$i</td><td>$ENV{$i}</td></tr>";
+}
+print<<here;
+    </table>
+</center>
+</html>
+here
+
+
+
+1b.html
+
+<html>
+    <!-- path to perl file -->
+    <form action="http://localhost:8080/cgi-bin/1b.pl">
+        <!-- input command name -->
+        Command:<input type=text name=com>
+            <input type=submit value=submit />
+    </form>
+ </html>
+
+
+1b.pl
+
+#!C:/xampp/perl/bin/perl.exe
+ use CGI':standard';
+ #the following line is used for displaying the output of the script in the browser
+ print "Content-type:text/html\n\n";
+ #take the input command from the browser and store in the variable
+ $c=param('com');
+ #process the command
+ system($c);
+ exit(0);
+
+
+2a.html
+
+<html>
+      <!-- path to perl file -->
+      <form action="http://localhost:8080/cgi-bin/2a.pl">
+           <center>
+                <!-- input -->
+                <h2>Enter your name:</h2>
+                <input type=text name=name />
+                <input type=submit value=submit />
+           </center>
+      </form>
+ </html>
+
+
+2a.pl
+
+#!/xampp/perl/bin/perl.exe
+# Load CGI standard routines
+use CGI qw(:standard);
+
+# Take input from the form and store in local variable
+my $cmd = param('name');
+
+# Define various greeting messages
+my @greet = ("Hello", "Hai", "Nice meeting you", "Have a nice day");
+
+# Choose a message based on a random index
+my $index = int(rand(scalar(@greet)));
+
+# Output the HTML with the greeting
+print "Content-type: text/html\n\n";
+print <<HTML;
+<html>
+    <center>
+        <h2>$cmd, $greet[$index]</h2>
+    </center>
+</html>
+HTML
+
+
+2b.html
+
+<html>
+      <form action="http://localhost:8080/cgi-bin/2b.pl">
+           <center>
+                <input type=submit value=Show_no_of_views />
+           </center>
+      </form>
+ </html>
+
+
+2b.pl
+
+#!C:/xampp/perl/bin/perl.exe
+ #load CGI standard routines
+ use CGI':standard';
+ print "Content-type:text/html\n\n";
+ #open a file called count.txt to store values of number of views
+ open(FILE,'<count.txt');
+ #contents of file are copied to the variable
+ $count=<FILE>;
+ close(FILE);
+ $count++;
+ #append the new incremented value to the beginning of the file
+ open(FILE,'>count.txt');
+ print FILE "$count";
+ print "This page has been viewed $count times";
+
+
+3.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Page</title>
+</head>
+<body>
+    <center>
+        <h1>Welcome to the Greeting Page</h1>
+        <form action="http://localhost:8080/cgi-bin/3.pl" method="GET">
+            <label for="username">Enter Username:</label>
+            <input type="text" name="user" id="username" required>
+            <input type="submit" value="Check Greeting">
+        </form>
+    </center>
+</body>
+</html>
+
+
+3.pl
+
+#!C:/xampp/perl/bin/perl.exe
+use CGI qw(:standard);
+use strict;
+use warnings;
+
+# Load CGI and get current time
+my $cgi = CGI->new();
+my $current_time = localtime();
+
+# Example user login check (In real applications, use session management)
+my $webmaster_logged_in = param('user') eq 'webmaster' ? 1 : 0;
+
+# Generate a greeting based on the time of access
+my $greeting;
+my $hour = (localtime)[2];  # Get the current hour (0-23)
+
+if ($hour >= 5 && $hour < 12) {
+    $greeting = "Good morning!";
+} elsif ($hour >= 12 && $hour < 17) {
+    $greeting = "Good afternoon!";
+} elsif ($hour >= 17 && $hour < 21) {
+    $greeting = "Good evening!";
+} else {
+    $greeting = "Good night!";
+}
+
+# Output the HTML header
+print $cgi->header('text/html');
+
+# Start the HTML output
+print <<HTML;
+<html>
+    <head>
+        <title>Greeting Page</title>
+    </head>
+    <body>
+        <center>
+            <h2>$greeting</h2>
+            <p>Access Time: $current_time</p>
+HTML
+
+# Check if the webmaster is logged in
+if ($webmaster_logged_in) {
+    print "<p>Welcome back, Webmaster!</p>";
+} else {
+    print "<p>You are not logged in as Webmaster.</p>";
+}
+
+# End the HTML output
+print <<HTML;
+        </center>
+    </body>
+</html>
+HTML
+
+
+4.html
+
+<html>
+    <form action="http://localhost:8080/cgi-bin/4.pl">
+        <center>
+            <input type=submit value=Click_to_display_time>
+        </center>
+    </form>
+ </html>
+
+
+4.pl
+
+#!C:/xampp/perl/bin/perl.exe
+ use CGI':standard';
+ #refresh the display every second
+ print "Refresh:1\n";
+ print "Content-type:text/html\n\n";
+ ($s,$m,$h)=localtime(time);
+ print br "The current server time is $h:$m:$s";
+ print br "In words,the time is- $h hours, $m minutes and $s seconds";
+
+
+5.php
+
+<?php
+// Database credentials
+$servername = "localhost";
+$username = "root";
+$password = ""; // Default password for XAMPP MySQL is empty
+$dbname = "test"; // Replace with your actual database name
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to fetch data from the table
+$sql = "SELECT * FROM info"; // Replace with your actual table name
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output data in an HTML table
+    echo "<table border='1'><tr>";
+    
+    // Fetch and display column names as table headers
+    while ($fieldinfo = $result->fetch_field()) {
+        echo "<th>" . $fieldinfo->name . "</th>";
+    }
+    echo "</tr>";
+    
+    // Fetch and display each row of data
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        foreach ($row as $data) {
+            echo "<td>" . htmlspecialchars($data) . "</td>";
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+// Close connection
+$conn->close();
+?>
+
+
+6.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert and Display Records</title>
+</head>
+<body>
+    <h2>Enter Name and Age</h2>
+    <form action="6.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <?php
+    // Database credentials
+    $servername = "localhost";
+    $username = "root";
+    $password = ""; // Default password for XAMPP MySQL is empty
+    $dbname = "test"; // Replace with your database name
+
+    // Create a connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Insert data if form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get data from form
+        $name = $_POST['name'];
+        $age = $_POST['age'];
+
+        // Prepare and bind
+        $stmt = $conn->prepare("INSERT INTO info (name, age) VALUES (?, ?)"); // Replace with your table name
+        $stmt->bind_param("si", $name, $age);
+
+        // Execute the query
+        if ($stmt->execute()) {
+            echo "<p>New record inserted successfully!</p>";
+        } else {
+            echo "<p>Error: " . $stmt->error . "</p>";
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
+
+    // Fetch and display all records from the table
+    $sql = "SELECT * FROM info"; // Replace with your table name
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<h2>Current Records</h2>";
+        echo "<table border='1'><tr><th>Name</th><th>Age</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "</td><td>" . $row["name"] . "</td><td>" . $row["age"] . "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No records found.</p>";
+    }
+
+    // Close the database connection
+    $conn->close();
+    ?>
+</body>
+</html>
+
+
+7.php
+
+<?php
+// Database configuration
+$servername = "localhost";
+$username = "root";      // Default XAMPP MySQL username
+$password = "";          // Default XAMPP MySQL password (leave blank)
+$dbname = "test_db";     // Name of the database you created
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to select all records from the 'users' table
+$sql = "SELECT * FROM users";
+$result = $conn->query($sql);
+
+// HTML structure to display results
+echo "<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Users</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Users List</h1>";
+
+if ($result->num_rows > 0) {
+    echo "<table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>";
+    
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row["id"] . "</td>
+                <td>" . $row["name"] . "</td>
+                <td>" . $row["age"] . "</td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "<p>No records found.</p>";
+}
+
+// Close the connection
+$conn->close();
+
+echo "</body>
+</html>";
+?>
+
+
+8.php
+
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database configuration
+    $servername = "localhost";
+    $username = "root";      // Default XAMPP MySQL username
+    $password = "";          // Default XAMPP MySQL password (leave blank)
+    $dbname = "library_db";  // Name of the database you created
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Retrieve form data
+    $accession_number = $_POST['accession_number'];
+    $title = $_POST['title'];
+    $authors = $_POST['authors'];
+    $edition = $_POST['edition'];
+    $publication = $_POST['publication'];
+
+    // Prepare and bind the SQL statement
+    $stmt = $conn->prepare("INSERT INTO books (accession_number, title, authors, edition, publication) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("issss", $accession_number, $title, $authors, $edition, $publication);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        echo "New book added successfully.";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close the connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Book</title>
+</head>
+<body>
+    <h1>Add New Book</h1>
+    <form method="post" action="">
+        <label for="accession_number">Accession Number:</label><br>
+        <input type="number" id="accession_number" name="accession_number" required><br><br>
+
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="authors">Authors:</label><br>
+        <input type="text" id="authors" name="authors" required><br><br>
+
+        <label for="edition">Edition:</label><br>
+        <input type="text" id="edition" name="edition" required><br><br>
+
+        <label for="publication">Publication:</label><br>
+        <input type="text" id="publication" name="publication" required><br><br>
+
+        <input type="submit" value="Add Book">
+    </form>
+</body>
+</html>
+
+
+9.php
+
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database configuration
+    $servername = "localhost";
+    $username = "root";      // Default XAMPP MySQL username
+    $password = "";          // Default XAMPP MySQL password (leave blank)
+    $dbname = "library_db";  // Name of the database you created
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Retrieve the title from the form input
+    $search_title = $_POST['title'];
+
+    // Prepare and execute SQL query to search for the title
+    $stmt = $conn->prepare("SELECT accession_number, title, authors, edition, publication FROM books WHERE title LIKE ?");
+    $search_param = "%" . $search_title . "%";
+    $stmt->bind_param("s", $search_param);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Display results if any books are found
+    if ($result->num_rows > 0) {
+        echo "<h1>Search Results</h1>";
+        echo "<table border='1'>
+                <tr>
+                    <th>Accession Number</th>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Edition</th>
+                    <th>Publication</th>
+                </tr>";
+        
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>" . htmlspecialchars($row['accession_number']) . "</td>
+                    <td>" . htmlspecialchars($row['title']) . "</td>
+                    <td>" . htmlspecialchars($row['authors']) . "</td>
+                    <td>" . htmlspecialchars($row['edition']) . "</td>
+                    <td>" . htmlspecialchars($row['publication']) . "</td>
+                  </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No books found with the title '" . htmlspecialchars($search_title) . "'</p>";
+    }
+
+    // Close the connection
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Book by Title</title>
+</head>
+<body>
+    <h1>Search for a Book</h1>
+    <form method="post" action="">
+        <label for="title">Enter Book Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+
+
+10a.
+GreetingApp.java
+
+
+package com.example;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class GreetingServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    // Handle POST requests (form submission)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");  // Get the username from the form
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        // Display the greeting message
+        out.println("<html><body>");
+        out.println("<h2>Hello, " + username + "! Welcome to the website!</h2>");
+        out.println("</body></html>");
+    }
+
+    // Handle GET requests (to display the form initially)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        // Display the form to get the username
+        out.println("<html><body>");
+        out.println("<h2>Please enter your username:</h2>");
+        out.println("<form method='POST' action='GreetingServlet'>");
+        out.println("Username: <input type='text' name='username'>");
+        out.println("<input type='submit' value='Greet Me'>");
+        out.println("</form>");
+        out.println("</body></html>");
+    }
+}
+
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+            http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>GreetingServlet</servlet-name>
+        <servlet-class>com.example.GreetingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GreetingServlet</servlet-name>
+        <url-pattern>/GreetingServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+
+10b.
+
+ChangeColorServlet.java
+
+package colorapp;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class ChangeColorServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    // Handle POST requests (form submission)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String color = request.getParameter("color");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body style='background-color:" + color + ";'>");
+        out.println("<h2>Background color changed to: " + color + "</h2>");
+        out.println("</body></html>");
+    }
+
+    // Handle GET requests (for direct access or testing)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Use POST method to change the background color</h2>");
+        out.println("</body></html>");
+    }
+}
+
+
+changecolor.html
+
+<html>
+<body>
+    <form action="servlet/ChangeColorServlet" method="POST">
+        <label for="color">Choose a background color:</label>
+        <input type="text" id="color" name="color">
+        <input type="submit" value="Change Color">
+    </form>
+</body>
+</html>
+
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- Servlet Definition -->
+    <servlet>
+        <servlet-name>ChangeColorServlet</servlet-name>
+        <servlet-class>colorapp.ChangeColorServlet</servlet-class>
+    </servlet>
+    
+    <!-- Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>ChangeColorServlet</servlet-name>
+        <url-pattern>/servlet/ChangeColorServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+
+11.
+
+TimeBasedGreetingServlet.java
+
+package com.example;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class TimeBasedGreetingServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get current date and time
+        Date now = new Date();
+        
+        // Format the time to include hours, minutes, and seconds
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        String formattedTime = timeFormat.format(now);
+        
+        // Get the current hour
+        int currentHour = now.getHours();
+        
+        // Determine the greeting based on the time of day
+        String greeting;
+        if (currentHour < 12) {
+            greeting = "Good Morning!";
+        } else if (currentHour < 17) {
+            greeting = "Good Afternoon!";
+        } else {
+            greeting = "Good Evening!";
+        }
+        
+        // Set the response content type
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        
+        // Send the greeting and current time to the browser
+        out.println("<html><body>");
+        out.println("<h1>" + greeting + "</h1>");
+        out.println("<p>Current time: " + formattedTime + "</p>");
+        out.println("</body></html>");
+    }
+}
+
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/servlet"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/servlet
+                             http://java.sun.com/xml/ns/servlet/web-app_3_0.xsd"
+         version="3.0">
+
+    <servlet>
+        <servlet-name>TimeBasedGreetingServlet</servlet-name>
+        <servlet-class>com.example.TimeBasedGreetingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TimeBasedGreetingServlet</servlet-name>
+        <url-pattern>/greet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+
+12.
+
+CreateCookieServlet.java
+
+package com.example;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class CreateCookieServlet extends HttpServlet {
+
+    // DoGet method to create a cookie and display it
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        // Set content type for the response
+        response.setContentType("text/html");
+        
+        // Create a new cookie with name "user" and value "JohnDoe"
+        Cookie userCookie = new Cookie("user", "John");
+        
+        // Set the cookie to expire in 1 hour (3600 seconds)
+        userCookie.setMaxAge(3600);
+        
+        // Add the cookie to the response
+        response.addCookie(userCookie);
+        
+        // Print the cookie creation message
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Cookie 'user' created with value: " + userCookie.getValue() + "</h2>");
+        
+        // Check if cookies are present in the request (on a subsequent request)
+        Cookie[] cookies = request.getCookies();
+        
+        if (cookies != null) {
+            boolean foundCookie = false;
+            // Loop through cookies and display their name and value
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("user")) {
+                    out.println("<h3>Cookie 'user' value is: " + cookie.getValue() + "</h3>");
+                    foundCookie = true;
+                    break;
+                }
+            }
+            if (!foundCookie) {
+                out.println("<h3>No 'user' cookie found in the request!</h3>");
+            }
+        } else {
+            out.println("<h3>No cookies found in the request!</h3>");
+        }
+        
+        out.println("</body></html>");
+    }
+}
+
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/servlet"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/servlet
+                             http://java.sun.com/xml/ns/servlet/web-app_3_0.xsd"
+         version="3.0">
+    
+    <servlet>
+        <servlet-name>CreateCookieServlet</servlet-name>
+        <servlet-class>com.example.CreateCookieServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateCookieServlet</servlet-name>
+        <url-pattern>/CreateCookieServlet</url-pattern>
+    </servlet-mapping>
+    
+</web-app>
+
+
+13.
+
+SessionInfoServlet.java
+
+package com.example;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class SessionInfoServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        // Set the content type for the response
+        response.setContentType("text/html");
+        
+        // Get the session object from the request. If it doesn't exist, create a new one.
+        HttpSession session = request.getSession(true);  // true means create a new session if it doesn't exist
+        
+        // Get the session ID
+        String sessionId = session.getId();
+        
+        // Get the session creation time
+        long creationTime = session.getCreationTime();
+        
+        // Get the last accessed time
+        long lastAccessedTime = session.getLastAccessedTime();
+        
+        // Get PrintWriter object to write the response
+        PrintWriter out = response.getWriter();
+        
+        out.println("<html><body>");
+        out.println("<h2>Session Information</h2>");
+        out.println("<p>Session ID: " + sessionId + "</p>");
+        out.println("<p>Session Creation Time: " + new java.util.Date(creationTime) + "</p>");
+        out.println("<p>Session Last Accessed Time: " + new java.util.Date(lastAccessedTime) + "</p>");
+        
+        out.println("</body></html>");
+    }
+}
+
+
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <servlet>
+        <servlet-name>SessionInfoServlet</servlet-name>
+        <servlet-class>com.example.SessionInfoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SessionInfoServlet</servlet-name>
+        <url-pattern>/session-info</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+
+14.
+
+RequestInfoServlet.java
+
+package com.example;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/RequestInfoServlet")
+public class RequestInfoServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set the response content type
+        response.setContentType("text/html");
+
+        // Get the writer to send response
+        java.io.PrintWriter out = response.getWriter();
+
+        // Get the request method
+        String method = request.getMethod();
+
+        // Get the requested URL
+        String url = request.getRequestURL().toString();
+
+        // Get the protocol
+        String protocol = request.getProtocol();
+
+        // Get the remote address (IP address of the client)
+        String remoteAddress = request.getRemoteAddr();
+
+        // Write the information to the browser
+        out.println("<html><body>");
+        out.println("<h2>Request Information</h2>");
+        out.println("<p>Request Method: " + method + "</p>");
+        out.println("<p>Request URL: " + url + "</p>");
+        out.println("<p>Protocol: " + protocol + "</p>");
+        out.println("<p>Remote Address: " + remoteAddress + "</p>");
+        out.println("</body></html>");
+    }
+}
+
+
+15.
+
+UserServlet.java
+
+package com.example;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+
+public class UserServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set the response content type
+        response.setContentType("text/html");
+
+        // Get the username and address from the form
+        String username = request.getParameter("username");
+        String address = request.getParameter("address");
+
+        // Get the output stream to write the response
+        PrintWriter out = response.getWriter();
+
+        // Display the username and address on the webpage
+        out.println("<html><body>");
+        out.println("<h2>User Information</h2>");
+        if (username == null || address == null) {
+            out.println("<p>Error: Missing parameters!</p>");
+        } else {
+            out.println("<p><b>Username:</b> " + username + "</p>");
+            out.println("<p><b>Address:</b> " + address + "</p>");
+        }
+        out.println("</body></html>");
+    }
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter User Information</title>
+</head>
+<body>
+    <h2>Enter Username and Address</h2>
+    <form action="UserServlet" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+web.xml
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.example.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
