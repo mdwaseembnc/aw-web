@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create and Display Cookie</title>
+</head>
+<body>
+    <h1>Create a Cookie</h1>
+    <form action="CreateCookieServlet" method="post">
+        <label for="cookieName">Cookie Name:</label>
+        <input type="text" id="cookieName" name="cookieName" required><br><br>
+        
+        <label for="cookieValue">Cookie Value:</label>
+        <input type="text" id="cookieValue" name="cookieValue" required><br><br>
+        
+        <button type="submit">Create Cookie</button>
+    </form>
+    <h2>View Cookies</h2>
+    <a href="DisplayCookieServlet">Click here to view all cookies</a>
+</body>
+</html>
+......................................................................................................................
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/CreateCookieServlet")
+public class CreateCookieServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Retrieve cookie name and value from the form
+        String name = request.getParameter("cookieName");
+        String value = request.getParameter("cookieValue");
+        
+        // Create a new cookie
+        Cookie cookie = new Cookie(name, value);
+        cookie.setMaxAge(60 * 60 * 24); // Set expiry time (1 day)
+        response.addCookie(cookie);
+        
+        // Inform the user
+        response.setContentType("text/html");
+        response.getWriter().println("<h1>Cookie Created Successfully!</h1>");
+        response.getWriter().println("<a href='index.html'>Go Back</a>");
+    }
+}
+......................................................................................................
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/DisplayCookieServlet")
+public class DisplayCookieServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.getWriter().println("<h1>Cookies Stored on Client</h1>");
+        
+        // Retrieve cookies from the request
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            response.getWriter().println("<ul>");
+            for (Cookie cookie : cookies) {
+                response.getWriter().println("<li>" + cookie.getName() + ": " + cookie.getValue() + "</li>");
+            }
+            response.getWriter().println("</ul>");
+        } else {
+            response.getWriter().println("<p>No cookies found.</p>");
+        }
+        response.getWriter().println("<a href='index.html'>Go Back</a>");
+    }
+}
