@@ -1,0 +1,42 @@
+<html>
+<head>
+ <title>Cookie Example</title>
+</head>
+<body>
+ <h2>Enter Your Favorite Language</h2>
+ <form action="CookieServlet" method="POST">
+ <label for="lang">Favorite Programming Language:</label>
+ <input type="text" id="lang" name="lang">
+ <input type="submit" value="Submit">
+ </form>
+</body>
+</html>
+..........................................................................................................
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+@WebServlet("/CookieServlet")
+public class CookieServlet extends HttpServlet {
+ private static final long serialVersionUID = 1L;
+ protected void doPost(HttpServletRequest request, 
+HttpServletResponse response) throws ServletException, 
+IOException {
+ String lang = request.getParameter("lang");
+ Cookie cookie = new Cookie("language", lang);
+ cookie.setMaxAge(60 * 60 * 24); // 1 day expiry
+ response.addCookie(cookie);
+ response.setContentType("text/html");
+ PrintWriter out = response.getWriter();
+ out.println("<html><body>");
+ out.println("<h1>Favorite Language Cookie Created: " + lang + 
+"</h1>");
+ out.println("</body></html>");
+ }
+}
+

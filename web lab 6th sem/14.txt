@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Information</title>
+</head>
+<body>
+
+    <h1>Request Information Example</h1>
+    <p>This page will display various details about the server request such as the method, URL, protocol, and remote address.</p>
+    
+    <a href="ServerInfoServlet" id="requestInfoLink">Click here to get server request information</a>
+    
+    <br><br>
+    
+    <button onclick="window.location.reload()">Refresh to check server info</button>
+
+</body>
+</html>
+........................................................................................................................
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/ServerInfoServlet")
+public class ServerInfoServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        response.setContentType("text/html");
+
+        
+        java.io.PrintWriter out = response.getWriter();
+
+        
+        String method = request.getMethod();
+
+        
+        String url = request.getRequestURL().toString();
+
+        
+        String protocol = request.getProtocol();
+
+        
+        String remoteAddress = request.getRemoteAddr();
+
+        
+        out.println("<html><body>");
+        out.println("<h2>Request Information</h2>");
+        out.println("<p>Request Method: " + method + "</p>");
+        out.println("<p>Request URL: " + url + "</p>");
+        out.println("<p>Protocol: " + protocol + "</p>");
+        out.println("<p>Remote Address: " + remoteAddress + "</p>");
+        out.println("</body></html>");
+    }
+}
+

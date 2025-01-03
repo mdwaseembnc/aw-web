@@ -1,0 +1,49 @@
+<html>
+<head>
+ <title>Session Information</title>
+</head>
+<body>
+ <h2>Check Session Information</h2>
+ <form action="SessionInfoServlet" method="get">
+ <input type="submit" value="Get Session Info">
+ </form>
+</body>
+</html>
+...........................................................................................................
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+@WebServlet("/SessionInfoServlet")
+public class SessionInfoServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+
+        
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String creationTime = dateFormatter.format(new Date(session.getCreationTime()));
+        String lastAccessedTime = dateFormatter.format(new Date(session.getLastAccessedTime()));
+
+        
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+       
+        out.println("<html><body>");
+        out.println("<h1>Session Information</h1>");
+        out.println("<p><b>Session ID:</b> " + session.getId() + "</p>");
+        out.println("<p><b>Creation Time:</b> " + creationTime + "</p>");
+        out.println("<p><b>Last Accessed Time:</b> " + lastAccessedTime + "</p>");
+        out.println("</body></html>");
+    }
+}

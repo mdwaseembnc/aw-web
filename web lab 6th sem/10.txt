@@ -1,0 +1,84 @@
+10A)
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Greeting Page</title>
+</head>
+
+<body>
+	<form action="GreetingServlet" method="post">
+		<label for="username">Enter your name:</label>
+		<input type="text" id="username" name="username" required>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+
+</html>
+.......................................................................................................................
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/GreetingServlet")
+public class GreetingServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String username = request.getParameter("username");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>Hello, " + username + "!</h1>");
+        out.println("</body></html>");
+    }
+}
+.................................................................................................................
+10b)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background Color</title>
+</head>
+<body>
+    <form action="ColorServlet" method="post">
+        <label for="color">Select a background color:</label>
+        <select id="color" name="color">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="white">White</option>
+        </select>
+        <button type="submit">Change Color</button>
+    </form>
+</body>
+</html>
+............................................................................................................................
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/ColorServlet")
+public class ColorServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String color = request.getParameter("color");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body style='background-color:" + color + ";'>");
+        out.println("<h1>The background color is now " + color + "!</h1>");
+        out.println("</body></html>");
+    }
+}
+
